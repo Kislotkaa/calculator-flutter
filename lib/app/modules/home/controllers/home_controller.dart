@@ -1,7 +1,6 @@
 import 'package:calculator/app/model/calcs_operation.dart' as SDA;
 import 'package:get/get.dart';
 import 'package:math_expressions/math_expressions.dart';
-import 'package:dartx/dartx.dart';
 
 class HomeController extends GetxController {
   late RxString text = ''.obs;
