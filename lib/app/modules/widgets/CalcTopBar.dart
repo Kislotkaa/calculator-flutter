@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class CalcBar extends StatelessWidget {
+class CalcTopBar extends StatelessWidget {
   final String helper;
   final String text;
 
-  const CalcBar({
+  const CalcTopBar({
     Key? key,
     required this.helper,
     required this.text,
