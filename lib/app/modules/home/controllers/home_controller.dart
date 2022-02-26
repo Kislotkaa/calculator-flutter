@@ -8,6 +8,7 @@ class HomeController extends GetxController {
   late Op.Operation operation = Op.Default();
   Parser p = Parser();
   final String errorDecs = 'НЕЛЬЗЯ ТАК';
+  RegExp exp = RegExp(r"[\W^ ]");
   String str = "Parse my string";
 
   bool validator() {
@@ -54,6 +55,9 @@ class HomeController extends GetxController {
     if (operation is Op.Default) {
       helper.value += symbol;
       text.value += symbol;
+      if (exp.hasMatch(helper.value)) {
+        calc();
+      }
     } else {
       helper.value += operation.operation;
       text.value += operation.operation;
