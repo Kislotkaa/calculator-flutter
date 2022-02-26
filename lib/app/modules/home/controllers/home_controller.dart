@@ -13,6 +13,18 @@ class HomeController extends GetxController {
       text.value = helper.value[helper.value.length - 1];
       helper.value = helper.value[helper.value.length - 1];
       return false;
+    } else if (operation is Op.Division && helper.value.length == 2) {
+      text.value = 'НЕЛЬЗЯ ТАК';
+      helper.value = '';
+      return false;
+    } else if (operation is Op.Multiplication && helper.value.length == 2) {
+      text.value = 'НЕЛЬЗЯ ТАК';
+      helper.value = '';
+      return false;
+    } else if (operation is Op.Pow && helper.value.length == 2) {
+      text.value = 'НЕЛЬЗЯ ТАК';
+      helper.value = '';
+      return false;
     } else {
       return true;
     }
