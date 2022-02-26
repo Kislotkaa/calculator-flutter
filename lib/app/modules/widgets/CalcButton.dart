@@ -57,8 +57,6 @@ class _CalcButtonState extends State<CalcButton> {
         ),
       ),
     );
-
-    return const SizedBox();
   }
 
   void tapAction(bool active) {
