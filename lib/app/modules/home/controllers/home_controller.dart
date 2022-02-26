@@ -1,15 +1,15 @@
-import 'package:calculator/app/model/calcs_operation.dart' as SDA;
+import 'package:calculator/app/model/calcs_operation.dart' as Op;
 import 'package:get/get.dart';
 import 'package:math_expressions/math_expressions.dart';
 
 class HomeController extends GetxController {
   late RxString text = ''.obs;
   late RxString helper = ''.obs;
-  late SDA.Operation operation = SDA.Default();
+  late Op.Operation operation = Op.Default();
   Parser p = Parser();
 
   bool validator() {
-    if (operation is SDA.Plus && helper.value.length == 2) {
+    if (operation is Op.Plus && helper.value.length == 2) {
       text.value = helper.value[helper.value.length - 1];
       helper.value = helper.value[helper.value.length - 1];
       return false;
@@ -21,7 +21,7 @@ class HomeController extends GetxController {
   void clear() {
     text.value = '';
     helper.value = '';
-    operation = SDA.Default();
+    operation = Op.Default();
   }
 
   void calc() {
@@ -32,12 +32,12 @@ class HomeController extends GetxController {
       eval == double.infinity
           ? text.value = 'НЕЛЬЗЯ ТАК'
           : text.value = eval.toString();
-      operation = SDA.Default();
+      operation = Op.Default();
     }
   }
 
   void addSymbol(String symbol) {
-    if (operation is SDA.Default) {
+    if (operation is Op.Default) {
       helper.value += symbol;
       text.value += symbol;
     } else {
@@ -49,7 +49,7 @@ class HomeController extends GetxController {
     }
   }
 
-  void useOperation(SDA.Operation operation) {
+  void useOperation(Op.Operation operation) {
     this.operation = operation;
   }
 }

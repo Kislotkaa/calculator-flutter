@@ -4,12 +4,12 @@ abstract class Operation {
   Operation(this.operation);
 }
 
-class Plus extends Operation {
-  Plus() : super('+');
-}
-
 class Default extends Operation {
   Default() : super('');
+}
+
+class Plus extends Operation {
+  Plus() : super('+');
 }
 
 class Minus extends Operation {
