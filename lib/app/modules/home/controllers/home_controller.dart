@@ -8,6 +8,7 @@ class HomeController extends GetxController {
   late Op.Operation operation = Op.Default();
   Parser p = Parser();
   final String errorDecs = 'НЕЛЬЗЯ ТАК';
+  String str = "Parse my string";
 
   bool validator() {
     if (operation is Op.Plus && helper.value.length == 2) {

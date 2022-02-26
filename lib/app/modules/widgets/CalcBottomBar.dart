@@ -114,6 +114,15 @@ class CalcBottomBar extends StatelessWidget {
             ),
           ],
         ),
+        BaseRow(
+          children: [
+            CalcButton(
+              child: '=',
+              onTap: () => controller.calc(),
+              countExpend: 4,
+            ),
+          ],
+        ),
       ],
     );
   }
