@@ -16,15 +16,6 @@ class HomeController extends GetxController {
       text.value = textBuf.value[textBuf.value.length - 1];
       textBuf.value = textBuf.value[textBuf.value.length - 1];
       return false;
-    } else if (operation is SDA.Multiplication) {
-      text.value = 'НЕЛЬЗЯ ТАК';
-      return false;
-    } else if (operation is SDA.Division) {
-      text.value = 'НЕЛЬЗЯ ТАК';
-      return false;
-    } else if (operation is SDA.Pow) {
-      text.value = 'НЕЛЬЗЯ ТАК';
-      return false;
     } else {
       return true;
     }
