@@ -4,16 +4,14 @@ import 'package:math_expressions/math_expressions.dart';
 
 class HomeController extends GetxController {
   late RxString text = ''.obs;
-  late RxString textBuf = ''.obs;
   late RxString helper = ''.obs;
   late SDA.Operation operation = SDA.Default();
   Parser p = Parser();
 
   bool validator() {
-    if (operation is SDA.Plus && textBuf.value.length == 2) {
-      helper.value = textBuf.value;
-      text.value = textBuf.value[textBuf.value.length - 1];
-      textBuf.value = textBuf.value[textBuf.value.length - 1];
+    if (operation is SDA.Plus && helper.value.length == 2) {
+      text.value = helper.value[helper.value.length - 1];
+      helper.value = helper.value[helper.value.length - 1];
       return false;
     } else {
       return true;
@@ -22,17 +20,15 @@ class HomeController extends GetxController {
 
   void clear() {
     text.value = '';
-    textBuf.value = '';
     helper.value = '';
     operation = SDA.Default();
   }
 
   void calc() {
     if (validator()) {
-      Expression exp = p.parse(textBuf.value);
+      Expression exp = p.parse(helper.value);
       ContextModel cm = ContextModel();
       double eval = exp.evaluate(EvaluationType.REAL, cm);
-      helper.value = textBuf.value;
       eval == double.infinity
           ? text.value = 'НЕЛЬЗЯ ТАК'
           : text.value = eval.toString();
@@ -42,12 +38,12 @@ class HomeController extends GetxController {
 
   void addSymbol(String symbol) {
     if (operation is SDA.Default) {
-      textBuf.value += symbol;
+      helper.value += symbol;
       text.value += symbol;
     } else {
-      textBuf.value += operation.operation;
+      helper.value += operation.operation;
       text.value += operation.operation;
-      textBuf.value += symbol;
+      helper.value += symbol;
       text.value += symbol;
       calc();
     }

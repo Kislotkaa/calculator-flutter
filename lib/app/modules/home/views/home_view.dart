@@ -15,19 +15,20 @@ class HomeView extends GetView<HomeController> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-        child: Obx(
-          () => Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              CalcTopBar(
-                helper: controller.helper.value,
-                text: controller.text.value,
-              ),
-              const SizedBox(height: 16),
-              CalcBottomBar(controller: controller, color: color)
-            ],
-          ).paddingAll(12),
-        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Obx(() => CalcTopBar(
+                  helper: controller.helper.value,
+                  text: controller.text.value,
+                )),
+            const SizedBox(height: 16),
+            CalcBottomBar(
+              controller: controller,
+              color: color,
+            )
+          ],
+        ).paddingAll(12),
       ),
     );
   }
