@@ -7,6 +7,7 @@ class HomeController extends GetxController {
   late RxString helper = ''.obs;
   late Op.Operation operation = Op.Default();
   Parser p = Parser();
+  final String errorDecs = 'НЕЛЬЗЯ ТАК';
 
   bool validator() {
     if (operation is Op.Plus && helper.value.length == 2) {
@@ -14,15 +15,15 @@ class HomeController extends GetxController {
       helper.value = helper.value[helper.value.length - 1];
       return false;
     } else if (operation is Op.Division && helper.value.length == 2) {
-      text.value = 'НЕЛЬЗЯ ТАК';
+      text.value = errorDecs;
       helper.value = '';
       return false;
     } else if (operation is Op.Multiplication && helper.value.length == 2) {
-      text.value = 'НЕЛЬЗЯ ТАК';
+      text.value = errorDecs;
       helper.value = '';
       return false;
     } else if (operation is Op.Pow && helper.value.length == 2) {
-      text.value = 'НЕЛЬЗЯ ТАК';
+      text.value = errorDecs;
       helper.value = '';
       return false;
     } else {
@@ -42,7 +43,7 @@ class HomeController extends GetxController {
       ContextModel cm = ContextModel();
       double eval = exp.evaluate(EvaluationType.REAL, cm);
       eval == double.infinity
-          ? text.value = 'НЕЛЬЗЯ ТАК'
+          ? text.value = errorDecs
           : text.value = eval.toString();
       operation = Op.Default();
     }
